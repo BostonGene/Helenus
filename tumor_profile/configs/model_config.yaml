@@ -1,0 +1,196 @@
+Model_name: tumor_profile
+
+Mixes_params:
+    tumor_mean: 0.5
+    tumor_sd: 0.5
+    hyperexpression_fraction: 0.01
+    max_hyperexpr_level: 1000
+    num_points: 200000
+    rebalance_param: 0.3
+    gene_length: /uftp/Deconvolution/training/config/gene_length_values.tsv
+    genes_in_expression_path: /uftp/Deconvolution/product/training/genes/genes_v2.txt
+    num_av: 4
+
+Model_params:
+    genes_in_expression_path: /uftp/Deconvolution/product/training/genes/genes_v2.txt
+    random_seed: 0
+    n_jobs: 4
+    
+Tumor_types:  [Non_Small_Cell_Lung_Carcinoma, Lung_Adenocarcinoma, Bronchoalveolar_adenocarcinoma,
+               Squamous_Cell_Lung_Carcinoma, Adenosquamous_Cell_Lung_Carcinoma, Lung_Neoplasm,
+               Papillary_Lung_Adenocarcinoma, Invasive_Breast_Carcinoma, Pancreatic_Adenocarcinoma,
+               Breast_Neoplasm, Colorectal_Adenocarcinoma,  Colorectal_Neoplasm, Rectal_Adenocarinoma,
+               Cutaneous_Melanoma, Cutaneous_Squamous_Cell_Carcinoma, Renal_Cell_Carcinoma,
+               Clear_Cell_Carcinoma, Papillary_Renal_Cell_Carcinoma, Head_and_Neck_Neoplasm,
+               Squamous_Cell_Carcinoma_of_the_Head_and_Neck, Pancreatic_Neoplasm, Stomach_Adenocarcinoma,
+               Intestinal_Neoplasm, Prostate_Carcinoma, Invasive_Ductal_Breast_Carcinoma, Prostatic Neoplasms,
+               Squamous_Cell_Carcinoma_of_the_Hypopharynx, Squamous_Cell_Carcinoma_of_the_Oral_Cavity,
+               Non_Squamous_Non_Small_Cell_Lung_Cancer, Large_Cell_Lung_Carcinoma, Glioblastoma,
+               Triple_negative_Breast_Cancer, Esophagogastric_Junction_Carcinoma, Pancreatic_Ductal_Adenocarcinoma,
+               Prostate_Cancer, Colonic_Neoplasm, Tongue_Neoplasm, Laryngeal_Neoplasm, Solid_Neoplasm]
+
+Types_structure:
+    Stromal_cells: [Fibroblasts, Endothelium]
+    Immune_general: [Lymphoid_cells, Myeloid_cells]
+    Lymphoid_cells: [T_cells, B_cells, NK_cells, PDC]
+    Myeloid_cells: [Monocytes, Macrophages, Granulocytes, CDC]
+    T_cells: [CD8_T_cells, CD4_T_cells, Memory_T_cells, Naive_T_cells, MAIT_cells,
+              Conventional_T_cells, gd_T_cells,
+              Double-negative_T_cells]
+    CD4_T_cells: [Memory_T_helpers, Naive_T_helpers, Naive_CD4_T_cells, Tregs,
+                  OX40neg_CD137neg_CD4_T_cells, OX40pos_CD137pos_CD4_T_cells, TIL_CD4_T_cells,
+                  Th22_cells, Other_T_helpers, CD39int_CD25-_CD4_T_cells, CD39+_CD25+_CD4_T_cells,
+                  Th1_cells, Th2_cells, Th17_cells, Th22_cells, Th1_CTL,  Tfh_cells, Memory_CD4_T_cells,
+                  Central_memory_CD4_T_cells, Transitional_memory_CD4_T_cells, Effector_memory_CD4_T_cells,
+                  TEMRA_CD4_T_cells]
+    Memory_T_helpers: [Central_memory_T_helpers, Transitional_memory_T_helpers,
+                       Effector_memory_T_helpers, Other_memory_T_helpers]
+    Naive_T_helpers: []
+    Tregs: []
+    Th1_cells: [Th1_activated_cells, Th1_resting_cells]
+    Th2_cells: [Th2_activated_cells, Th2_resting_cells]
+    Th17_cells: [Th17_activated_cells, Th17_resting_cells]
+    Th1_activated_cells: []
+    Th1_resting_cells: []
+    Th2_activated_cells: []
+    Th2_resting_cells: []
+    Th17_activated_cells: []
+    Th17_resting_cells: []
+    Transitional_memory_T_helpers: []
+    Central_memory_T_helpers: []
+    Effector_memory_T_helpers: []
+    CD8_T_cells: [CD8_T_cells_PD1_high, CD8_T_cells_PD1_low, Eff_and_transit_memory_CD8_T_cells,
+                  Memory_CD8_T_cells, TIL_CD8_T_cells, CD39-_CD8_T_cells, CD39+_CD8_T_cells,
+                  CX3CR1+_CD69-_PD1+_CD39-_CD8_T_cells, Naive_CD8_T_cells, TEMRA_CD8_T_cells,
+                  CX3CR1+_CD69-_PD1-_CD39-_CD8_T_cells, CX3CR1-_CD69+_PD1-_CD39-_CD8_T_cells, 
+                  CX3CR1-_CD69+_PD1+_CD8_T_cells, PD1+_CX3CR1-_CD8_T_cells, PD1+_CX3CR1+_CD8_T_cells]
+    CD8_T_cells_PD1_high: []
+    CD8_T_cells_PD1_low: []
+    Naive_CD8_T_cells: []
+    Memory_CD8_T_cells: [Central_memory_CD8_T_cells, Transitional_memory_CD8_T_cells, 
+                         Effector_memory_CD8_T_cells, CX3CR1+_PD1+_CD45RA-_Memory_CD8_T_cells,
+                         Other_memory_CD8_T_cells, Activated_CD8_Trm_cells, CX3CR1-_PD1-_CXCR3-_Memory_CD8_T_cells,
+                         CX3CR1-_PD1-_CXCR3+_Memory_CD8_T_cells, CX3CR1-_PD1+_CXCR3+_Memory_CD8_T_cells,
+                         CXCR5+_memory_CD8_T_cells]
+    Central_memory_CD8_T_cells: []
+    Transitional_memory_CD8_T_cells: []
+    Effector_memory_CD8_T_cells: []
+    TEMRA_CD8_T_cells: [CX3CR1+_PD1-_CD57+_CXCR3+_TEMRA_CD8_T_cells, 
+                        CX3CR1+_PD1-_CD57+_CXCR3-_TEMRA_CD8_T_cells,
+                        CX3CR1+_PD1-_CD57-_CXCR3+_TEMRA_CD8_T_cells]
+    Conventional_T_cells: []
+    gd_T_cells: [Vdelta2neg_gd_T_cells, Vdelta2_T_cells]
+    MAIT_cells: [MAIT_CD8-_CD56-_cells, MAIT_CD8-_CD56+_cells, MAIT_CD8+_CD56-_cells,
+                 MAIT_CD8+_CD56+_cells]
+    B_cells: [Naive_B_cells, Mature_B_cells, Secreting_B_cells]
+    Naive_B_cells: []
+    Mature_B_cells: [Memory_exhausted_B_cells, Class_switched_memory_B_cells,
+                     Non_switched_memory_B_cells, CD27neg_Memory_B_cells]
+    Class_switched_memory_B_cells: [Class_switched_memory_IgG_B_cells, Class_switched_memory_IgA_B_cells]
+    Non_switched_memory_B_cells: []
+    Secreting_B_cells: [Plasmablasts, Plasma_B_cells]
+    NK_cells: [Cytotoxic_NK_cells, Regulatory_NK_cells, TD_ADCC_NK_cells, ADCC_NK_cells, 
+               Regulatory_NK_cells, Hyporeactive_NK_cells, NC_NK_cells]
+    Regulatory_NK_cells: []
+    Cytotoxic_NK_cells: []
+    Monocytes: [Classical_monocytes, Non_classical_monocytes,
+                Inter_monocytes, Classical_other_monocytes]
+    Classical_monocytes: [Classical_FceRI_monocytes, Classical_activated_monocytes]
+    Non_classical_monocytes: []
+    Granulocytes: [Neutrophils, Basophils, Eosinophils]
+    Basophils: []
+    Neutrophils: []
+    Eosinophils: []
+    PDC: [pDC]
+    CDC: [CDC1, СD1c-_DCs, CDC2]
+    Fibroblasts: [ Fibroblasts_CD146-_PDPNhi_FAP-,
+                   Fibroblasts_CD146+, Fibroblasts_CD146-_PDPNint_FAP+,
+                   Fibroblasts_CD146-_PDPN+, Fibroblasts_CD146-_PDPN-,
+                   Fibroblasts_CD146-_FAP-, Fibroblasts_CD146+_FAP-,
+                   Fibroblasts_CD146-_FAP+, Fibroblasts_CD146low_FAP+, Pericytes]
+    Endothelium: [Endothelium_CD29+_CD34+, Endothelium_CD29+_CD34low]
+    # Excluded: Monocyte-derived macrophages
+    Macrophages: [Macrophages_M1, Macrophages_M2, CD206pos_Macrophages, CD206neg_Macrophages, 
+                  CD206neg_autofluorescent_Macrophages, CD206pos_MERTKlow_Macrophages, 
+                  CD206neg_MERTK+_Macrophages, CD206pos_CD209pos_Macrophages]
+    Macrophages_M1: []
+    Macrophages_M2: []
+
+Model:
+    Params:
+        subsample: 0.9607
+        subsample_freq: 9
+        colsample_bytree: 0.7
+        reg_alpha: 3.9006
+        reg_lambda: 2.938
+        learning_rate: 0.05
+        max_depth: 11
+        min_child_samples: 271
+        num_leaves: 9419
+        n_estimators: 3000
+
+    Mix: [Lymphoid_cells, Myeloid_cells, Stromal_cells]
+    Genes: [LAIR1, GBP2, MXD1, SLAMF1, IL1B, CD160, SLC39A6, PECAM1, HLA-DMA, ATR, SAMD3
+SAMD3, MMP19, CD247, LCP1, IFI30, TAGLN, CCL4, ICAM3, LIMD2, VPREB3, ABTB1
+ABTB1, HDAC2, CORO1A, BCL2L1, PARP8, STAT6, PILRA, FPR2, CD248, CARD16, ICAM2
+ICAM2, MT1G, STK4, PTPRCAP, TNFSF13B, FCER2, CA9, ADORA2A, FAM129C, MRC1, TNFRSF1B
+TNFRSF1B, FAM26F, FASLG, PIK3R5, PRF1, NTRK3, MCL1, THBS2, HDAC1, ARHGAP15, SIGLEC9
+SIGLEC9, PLXNC1, TRAC, C3AR1, FGFR3, FYN, RGS1, PTPN6, CXCL8, KLRC2, ANKRD44
+ANKRD44, MMP25, CD28, RHOH, KMT2E, HLA-DRB5, HLA-DQA2, MAGEA12, AKNA, KLRC3, AKT2
+AKT2, CCND2, N4BP2L1, SPN, CDKN2A, GIMAP2, XCL2, ICAM1, NPL, TNFRSF17, WT1
+WT1, IKZF1, RASSF5, FGFR4, EVI2B, MAGEA3, PDGFRA, ITGAM, CSF2RB, FAM78A, ACAP1
+ACAP1, SLCO2B1, SPIB, ERBB2, TYROBP, BRCA1, HSPA6, NR4A3, NF2, TNFAIP3, DPEP2
+DPEP2, LSP1, ADGRE2, TXNRD1, CD274, FLT1, TNFRSF13C, EGFR, CCL5, ACSL1, TOP1
+TOP1, RASSF2, LY86, HDAC4, CD96, FGFBP2, DUSP2, CSF3R, RGS2, SIGLEC10, RNASE6
+RNASE6, ERCC1, IL4I1, MAGEA10, SP140, MS4A6A, ABI3, FGD3, STK17B, LRMP, CLEC12A
+CLEC12A, FGFR1, NAE1, DEFA1B, CD48, HLA-DQB1, AOAH, LYZ, BCL2A1, MPEG1, EMCN
+EMCN, COL6A3, CD226, CTSK, SASH3, CDK4, FCRL3, CD53, ATP2A3, PLEK, CCND3
+CCND3, ROBO4, IGF1, TRGC1, PTPN22, CD19, MZB1, CD83, SH2D1A, RUNX3, HLA-DRA
+HLA-DRA, TMEM176A, LRRC25, FPR3, PNRC1, TRAT1, SAMSN1, SPOCK2, MYO1F, AMICA1, EPHA2
+EPHA2, TACSTD2, LCP2, MFAP5, GZMB, ACTA2, GPR171, TSC2, CXCR1, FCRL6, SLC15A3
+SLC15A3, MS4A7, BRCA2, HPR, VSIG4, CYTIP, UMPS, CLEC7A, CDH5, GPR18, TPBG
+TPBG, ADORA1, CXCR4, RASGRP1, SELL, HHIP, MDM2, PTEN, IGSF6, NOTCH3, LST1
+LST1, CSRNP1, GLT1D1, KIR2DL3, XRCC5, SPON2, ZAP70, IL2RA, CD40LG, TTN, CST7
+CST7, PARVG, CCL7, PVRIG, FCER1G, ZBP1, IL10RA, CD38, SOD2, CD86, MKI67
+MKI67, PRKCB, BTG2, SLAMF7, RCSD1, ADGRG3, CCR4, CCL18, PHOSPHO1, APOBR, S100A12
+S100A12, APOA2, COL3A1, ORM1, KLRG1, EREG, TIGIT, ITGB2, MARCO, XCL1, KIR2DL1
+KIR2DL1, IL9, CD74, CD72, STK11, LAT2, GZMH, ROS1, IGF1R, TSC22D3, MS4A4A
+MS4A4A, TFEB, PYHIN1, POU2F2, CD244, GZMA, IL2RG, LCK, FGFR2, LAG3, PDE4B
+PDE4B, CCR3, OSM, ORM2, SPI1, ADAM8, FGR, RB1, CD163, APLN, TBX21
+TBX21, FERMT3, MAGEA1, SIGLEC5, RAD50, PMEL, KMT2C, CISH, LAPTM5, TREM2, PDCD1LG2
+PDCD1LG2, CD3D, SERPINB9, IGHD, ALK, CLEC14A, F13A1, CXCR2, FCN1, KLRC1, GREM1
+GREM1, PIM2, TYMS, CYTH4, ECSCR, FCAR, TNFAIP6, FMNL1, HK3, GBP5, BRAF
+BRAF, ALOX5AP, P2RY8, LILRB3, CCL13, LYVE1, CTSS, GZMM, CD79A, CD80, MEFV
+MEFV, HLA-DPB1, IRF4, NLRC3, VNN2, SERPINF1, EGF, EOMES, WAS, ATG16L2, PPP3CC
+PPP3CC, CD300A, NF1, HLA-C, IDO1, PLEKHO2, CD3E, TNIP3, DENND1C, ERBB3, SMO
+SMO, CDK2, GLIPR2, ITGA4, NFKBIA, FN1, MNDA, PTGDR, LTB, VNN3, CECR1
+CECR1, MS4A1, IGLL5, C1QA, TAGAP, PGR, ERBB4, CCL3, STAT5A, TMC8, CCL3L3
+CCL3L3, SNX20, PIK3AP1, STAP1, AURKB, CD69, IL23A, TNFAIP8L2, INPP5D, TMIGD2, CX3CR1
+CX3CR1, NCF4, IGHG1, FCGR1A, CD4, NCR3, RASGEF1B, HAVCR2, IGF2R, IL13, AC243829.1
+AC243829.1, TNF, ADORA2B, TIE1, RRM1, CCL4L2, CIITA, PDCD1, PLK1, CCR1, ADGRE3
+ADGRE3, XRCC1, PDGFA, IKZF3, CYBB, SIRPG, TERT, CTSW, KIR3DL2, CREM, XRCC3
+XRCC3, SMARCA4, KLRF1, BCL2L2, MSR1, FPR1, RORA, EGR2, ATF3, CD300E, CD37
+CD37, TNFRSF4, MMP2, INSR, DEFA1, HP, HLA-DMB, KLRC4, CD209, C1QC, BIRC5
+BIRC5, THEMIS2, ESM1, CD79B, NR4A2, GIMAP4, HCLS1, ACP5, MTOR, HDAC7, TNFSF8
+TNFSF8, ROR2, PIK3IP1, CD27, P2RY10, NRAS, LTA, CCR8, SRGN, CEACAM6, PARP15
+PARP15, CD7, ICOS, KRAS, B2M, IRF8, STMN1, LILRB2, CCL22, CDKN1A, PREX1
+PREX1, LILRB1, BCL6, STX11, CTLA4, CD5, LY9, RASAL3, DEFA3, KLRK1, IFNG
+IFNG, DOK2, CCND1, SH2D1B, FCGR3B, BANK1, TESPA1, HLA-DRB4, THEMIS, BTG1, FOLR2
+FOLR2, MYO1G, ARHGAP25, IL16, HLA-DRB3, SLA2, ATM, ITM2A, JCHAIN, MAP4K1, IL2RB
+IL2RB, SELE, CCNE2, FFAR2, ABCC3, PGLYRP1, SIGLEC14, C1orf162, IL17F, TBC1D10C, PAX5
+PAX5, ITK, C5AR1, IGHM, CLEC2D, COL1A1, HLA-DQA1, NCKAP1L, AREG, PRDM1, PTK7
+PTK7, LILRA5, ITGB4, FLNA, ZNF683, MAGEA2, BLK, PIK3CG, CD8B, ENTPD1, IL7R
+IL7R, NCR1, HCK, KLRD1, WIPF1, CSF1R, AMFR, PTPRC, LRRN3, PIK3CA, AIF1
+AIF1, ITGAX, HLA-DPA1, CXCL10, TP53, RRM2, FCRL1, ITGB7, SLAMF6, FGL2, MUC1
+MUC1, CXCL3, CLEC5A, CCNE1, HLA-DRB1, MMP1, TRGC2, ABCB1, EPCAM, CD52, FAM65B
+FAM65B, VWF, TNFRSF10C, COL1A2, STAB1, NCF1, GBP1, SLA, NOS3, APOBEC3G, POU2AF1
+POU2AF1, TRAF3IP3, ITGAL, FCGR3A, LILRB4, CD22, IGHG3, KIR2DL4, SELPLG, TNFRSF18, ELMO1
+ELMO1, ESAM, IGKC, MAGEA4, KIR3DL1, GNLY, ALOX5, AC233755.1, CD6, TRAF1, SMAP2
+SMAP2, CHEK2, DPYD, TUBB3, ARHGAP30, CD3G, TRBC2, ARHGAP9, IL18RAP, BIN2, P2RY13
+P2RY13, PIK3CD, GZMK, CDH1, FCMR, IRF2, GNG2, CCR7, PRKCQ, EMILIN2, NKG7
+NKG7, GNG8, CD8A, DLL3, IL27, GK, CCRL2, TRDC, KLRB1, IGF2, CD2
+CD2, NCF2, FCRLA, PLCB2, PLA2G7, GPR183, FCGR2A, AURKA, GRAP2, HCST, HDAC9
+HDAC9, MYB]
+
+    
+
