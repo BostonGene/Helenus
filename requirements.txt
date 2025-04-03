@@ -1,0 +1,5 @@
+pandas
+numpy
+mldeconv
+lightgbm==3.0.0
+loguru>=0.6.0

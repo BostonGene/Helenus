@@ -1,0 +1,23 @@
+[flake8]
+max-line-length = 121
+exclude =
+    .git,
+    *.tox,
+    __pycache__,
+
+application-import-names =
+    tumor_profile
+
+application-import-names =
+    mldeconv
+
+application-package-names =
+    gefest-light
+
+import-order-style = pycharm
+
+; per-file-ignores =
+;     # long lines
+;     ./mldeconv/cells_plotting.py: E501
+;     ./mldeconv/models/pbmc_model.py: E501
+;     ./mldeconv/models/tumor_model.py: E501
